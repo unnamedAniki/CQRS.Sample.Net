@@ -1,0 +1,5 @@
+{
+    "AppName": "Sample.API",
+    "Environment": "Development",
+    "CaptureAllExceptions": true
+}
