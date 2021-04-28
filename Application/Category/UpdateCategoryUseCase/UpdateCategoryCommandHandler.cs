@@ -33,6 +33,11 @@ namespace Sample.Application.Category.UpdateCategoryUseCase
 
             // TODO Реализовать логику сравнения атрибутов чтобы нельзя было изменять тип атрибута,
             // можно было только добавлять атрибут и изменять его наименование
+            if (category.Attributes.Any(a => request.Category.Attributes.Any(a1 => (a1.Type != a.Type) && a1.Id == a.Id)))
+            {
+                throw new BusinessLogicException("Недопустимо изменять типа атрибута категории");
+            }
+
 
             await mediator.Send(new UpdateCategoryDBCommand(request.Category));
 
